@@ -44,6 +44,44 @@ $arrRajas     = array(
     'Vietnamesen'
 );
 
+$arrDE = array(
+    'Azteken',
+    'Briten',
+    'Byzantiner',
+    'Chinesen',
+    'Franken',
+    'Goten',
+    'Hunnen',
+    'Japaner',
+    'Kelten',
+    'Koreaner',
+    'Maya',
+    'Mongolen',
+    'Perser',
+    'Sarazenen',
+    'Spanier',
+    'Teutonen',
+    'Türken',
+    'Wikinger',
+    'Italiener',
+    'Inder',
+    'Slawen',
+    'Ungarn',
+    'Inka',
+    'Berber',
+    'Malier',
+    'Äthopier',
+    'Portugiesen',
+    'Birmanen',
+    'Khmer',
+    'Malaien',
+    'Vietnamesen',
+    'Kumanen',
+    'Tartaren',
+    'Litauer',
+    'Bulgaren'
+);
+
 ?>
 <!doctype html>
 <html lang="de">
@@ -61,8 +99,20 @@ $arrRajas     = array(
     </style>
 </head>
 <body>
-    <p>Wähle deine Erweiterungen:</p>
-    <form action="" method="get">
+	<h1>AOE:2 Definitive Editon</h1>
+	<form id="de" action="" method="get">
+		<input type="hidden" name="def" value="1">
+		<div><input type="submit" value="Fraktion losen"/></div>
+	</form>
+	<?php
+    if(isset($_GET['def']))
+    {
+        echo 'Gelost: <strong>'.$arrDE[rand(0, sizeof($arrDE)-1)].'</strong>';
+	}
+	?>
+	<h1>AOE:2 HD</h1>
+	<p>Wähle deine Erweiterungen:</p>
+    <form id="hd" action="" method="get">
         <div><label for="forgotten">The Forgotten</label><input type="checkbox" id="forgotten" name="forgotten"<?php echo (isset($_GET['forgotten'])) ?' checked':''; ?>></div>
         <div><label for="africans">The African Kingdoms</label><input type="checkbox" id="africans" name="africans"<?php echo (isset($_GET['africans'])) ?' checked':''; ?>></div>
         <div><label for="rajas">Rise of the Rajas</label><input type="checkbox" id="rajas" name="rajas"<?php echo (isset($_GET['rajas'])) ?' checked':''; ?>></div>
@@ -87,10 +137,9 @@ $arrRajas     = array(
         {
             $arrFraktionen = array_merge($arrFraktionen, $arrRajas);
         }
+        //Fraktion losen
+        echo 'Gelost: <strong>'.$arrFraktionen[rand(0, sizeof($arrFraktionen)-1)].'</strong>';
     }
-
-    //Fraktion losen
-    echo 'Gelost: <strong>'.$arrFraktionen[rand(0, sizeof($arrFraktionen)-1)].'</strong>';
 
 
     ?>
